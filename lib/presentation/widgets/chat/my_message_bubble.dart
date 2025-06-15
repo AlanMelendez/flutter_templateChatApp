@@ -12,8 +12,8 @@ class MyMessageBubble extends StatelessWidget {
       children: [
         Container(
           decoration: BoxDecoration(
-            color: theme.secondary,
-            borderRadius: BorderRadius.circular(2.0),
+            color: theme.primary,
+            borderRadius: BorderRadius.circular(20.0),
           ),
           child: const Padding(
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10.0),
@@ -23,6 +23,7 @@ class MyMessageBubble extends StatelessWidget {
             ),
           ),
         ),
+        const SizedBox(height: 5.0), // Space between messages
       ],
     );
   }
