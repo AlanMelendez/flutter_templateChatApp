@@ -16,7 +16,7 @@ import 'package:flutter/material.dart';
 class AppTheme{
 
   final int selectedColor;
-  AppTheme({  this.selectedColor = 5});
+  AppTheme({  this.selectedColor = 0}): assert(selectedColor >= 0 && selectedColor <= _customColorPalette.length - 1, 'Colors must be between 0 and 5');
 
   ThemeData get theme {
     return ThemeData(
