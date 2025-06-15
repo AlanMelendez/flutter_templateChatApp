@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:theme_yes_app/presentation/widgets/chat/my_message_bubble.dart';
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen({super.key});
@@ -22,7 +23,27 @@ class ChatScreen extends StatelessWidget {
             ),
           ),
         ),
-        title: const Text('Mi Amor'),
+        title: const Text('Alice'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.video_call),
+            onPressed: () {
+              // Handle video call action
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.call),
+            onPressed: () {
+              // Handle voice call action
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.more_vert),
+            onPressed: () {
+              // Handle more options action
+            },
+          ),
+        ],
         centerTitle: true,
       ),
       body: _ChatView(),
@@ -48,22 +69,12 @@ class _ChatView extends StatelessWidget {
           children: [
             Expanded(
               child: ListView.builder(
-                itemCount: 5,
+                itemCount: 20,
                 itemBuilder: (context, index) {
-                  index++; // Increment index for display purposes
-                  return ListTile(
-                    leading: CircleAvatar(
-                      backgroundImage: NetworkImage(
-                        'https://avatars.githubusercontent.com/u/123456789?v=$index',
-                      ),
-                    ),
-                    title: Text('Mensaje $index'),
-                    subtitle: Text('Este es el contenido del mensaje $index'),
-                  );
+                  return MyMessageBubble();
                 },
               ),
             ),
-            Text('Hola, ¿cómo estás?'),
           ],
         ),
       ),
