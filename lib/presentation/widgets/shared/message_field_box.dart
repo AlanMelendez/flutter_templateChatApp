@@ -32,7 +32,7 @@ class MessageFieldBox extends StatelessWidget {
 
             final message = textController.value.text;
             // Handle send action
-            print('Value of the message field: ${message}');
+            print('Value of the message field: $message');
 
             textController.clear(); // Clear the field after sending
           },
