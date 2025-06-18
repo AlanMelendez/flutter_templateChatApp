@@ -21,6 +21,15 @@ class ChatProvider extends ChangeNotifier {
   ];
 
   Future<void> sendMessage(String text) async {
+
+    final newMessage = Message(
+      text: text,
+      fromWho: FromWho.me,
+    );
+
+    messageList.add(newMessage);
+
+    notifyListeners(); // Notify listeners to update the UI is the same way like setState in StatefulWidget
     
   }
 }

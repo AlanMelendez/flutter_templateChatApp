@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 
 
 class MessageFieldBox extends StatelessWidget {
-  const MessageFieldBox({super.key});
+
+  final ValueChanged<String> onValue;
+
+  const MessageFieldBox({super.key, required this.onValue});
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +35,7 @@ class MessageFieldBox extends StatelessWidget {
 
             final message = textController.value.text;
             // Handle send action
-            print('Value of the message field: $message');
-
-            textController.clear(); // Clear the field after sending
+            onValue(message);
           },
         ),
       );
@@ -45,9 +46,9 @@ class MessageFieldBox extends StatelessWidget {
       decoration: inputDecoration,
       onFieldSubmitted: (value) {
         // Handle send action when the user submits the field
-        print('Value to press onFieldSubmitted: $value');
         textController.clear(); // Clear the field after sending
         focusNode.requestFocus(); // Keep focus on the text field
+        onValue(value); // Call the callback with the entered value
       },
       onTapOutside: (event) {
         // Handle tap outside the text field to unfocus

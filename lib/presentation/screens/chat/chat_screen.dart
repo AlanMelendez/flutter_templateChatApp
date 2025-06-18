@@ -91,7 +91,10 @@ class _ChatView extends StatelessWidget {
                 },
               ),
             ),
-            MessageFieldBox(),
+            MessageFieldBox(
+              //onValue: chatProvider.sendMessage, // First option using the method directly (by reference)
+              onValue: (value ) => chatProvider.sendMessage(value), // Use the sendMessage method from ChatProvider
+            ),
           ],
         ),
       ),
