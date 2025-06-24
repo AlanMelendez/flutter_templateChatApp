@@ -29,24 +29,38 @@ class HerMessageBubble extends StatelessWidget {
         const SizedBox(height: 5.0), // Space between messages
 
         //TODO: Add image
-         _ImageBubble(),
-        const SizedBox(height: 10.0), // Space between messages
+        if (message.imageUrl != null && message.imageUrl!.isNotEmpty) ...[
+          _ImageBubble(imageUrl: message.imageUrl!),
+
+        ]else ...[
+          // If no image, just show a placeholder or nothing
+          const SizedBox.shrink(),
+        ],
+        // const SizedBox(height: 10.0), // Space between messages
       ],
     );
   }
 }
 
 class _ImageBubble extends StatelessWidget {
+  final String imageUrl;
+
+
+      //receive the imageUrl from the message
+  const _ImageBubble({required this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
 
+    
+
     final size = MediaQuery.of(context).size;
+
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(20.0),
       child: Image.network(
-        'https://picsum.photos/200/300',
+        imageUrl,
         width: size.width * 0.6, // Adjust width as needed
         height: size.width * 0.6, // Adjust height as needed
         fit: BoxFit.cover, // Adjust the image to cover the container
