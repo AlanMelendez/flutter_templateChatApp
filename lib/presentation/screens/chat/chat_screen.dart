@@ -70,6 +70,7 @@ class _ChatView extends StatelessWidget {
 
         final chatProvider = context.watch<ChatProvider>(); // Access the ChatProvider to manage chat state
 
+
     return SafeArea(
       // Ensure the content is not obscured by system UI (like the notch or status bar)
       child: Padding(
@@ -85,6 +86,8 @@ class _ChatView extends StatelessWidget {
                 itemCount: chatProvider.messageList.length,
                 itemBuilder: (context, index) {
                   final message = chatProvider.messageList[index];
+
+
                   
                   return (message.fromWho == FromWho.hers)
                       ? HerMessageBubble(message: message)
